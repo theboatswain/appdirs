@@ -567,16 +567,8 @@ if system == "win32":
     try:
         import win32com.shell
         _get_win_folder = _get_win_folder_with_pywin32
-    except ImportError:
-        try:
-            from ctypes import windll
-            _get_win_folder = _get_win_folder_with_ctypes
-        except ImportError:
-            try:
-                import com.sun.jna
-                _get_win_folder = _get_win_folder_with_jna
-            except ImportError:
-                _get_win_folder = _get_win_folder_from_registry
+    except ImportError:        
+        _get_win_folder = _get_win_folder_from_registry
 
 
 #---- self test code
